@@ -162,7 +162,7 @@ class ValidationError extends HttpError {
   }
 }
 
-class NotFoundError extends HttpError {
+export class NotFoundError extends HttpError {
   constructor(message: string) {
     super(404, message)
     this.name = 'NotFoundError'

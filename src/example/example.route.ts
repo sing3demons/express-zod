@@ -1,10 +1,12 @@
 import type { Router } from 'express'
-import { MyRouter } from '../route.js'
+import { IRoute, MyRouter, TypeRoute } from '../route.js'
+import ExampleController from './example.controller.js'
 
 export class ExampleRoute {
-  constructor(private readonly route: IRoute) {}
+  constructor(private readonly route: IRoute = new TypeRoute()) {}
 
   register(): Router {
-    return new MyRouter().Register(this.route).instance
+    const exampleController = new ExampleController(this.route)
+    return new MyRouter().Register(exampleController).instance
   }
 }
