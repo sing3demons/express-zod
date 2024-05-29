@@ -4,6 +4,7 @@
   "main": "lib/index.js",
   "module": "lib/index.js",
   "scripts": {
+    "start": "node dist/index.js",
     "build": "tsc",
     "dev": "tsx --watch src/main.ts"
   },

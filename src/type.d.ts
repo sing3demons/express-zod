@@ -1,9 +1,6 @@
-import { TypeRoute } from './route.js'
-import { Router, type NextFunction, type Request, type Response } from 'express'
+type IRoute = TypeRoute
 
-export type IRoute = TypeRoute
-
-export interface BaseResponse<T = unknown> {
+interface BaseResponse<T = unknown> {
   statusCode?: number
   message?: string
   /**
@@ -17,11 +14,11 @@ export interface BaseResponse<T = unknown> {
   total?: number
 }
 
-export type MaybePromise<T> = T | Promise<T>
+type MaybePromise<T> = T | Promise<T>
 
-export type RequestHandler = (req: Request, res: Response, next: NextFunction) => MaybePromise<BaseResponse>
+type RequestHandler = (req: Request, res: Response, next: NextFunction) => MaybePromise<BaseResponse>
 
-export interface HandlerMetadata {
+interface HandlerMetadata {
   __handlerMetadata: true
   method: string
   path: string

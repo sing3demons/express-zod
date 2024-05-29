@@ -1,6 +1,5 @@
 import type { Router } from 'express'
-import {  MyRouter } from '../route.js'
-import { IRoute } from '../type.js'
+import { MyRouter } from '../route.js'
 
 export class ExampleRoute {
   constructor(private readonly route: IRoute) {}

@@ -1,5 +1,4 @@
-import { IRoute } from '../type'
-
+ 
 export default class ExampleController {
   constructor(private readonly route: IRoute) {}
 
