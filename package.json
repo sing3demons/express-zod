@@ -11,7 +11,7 @@
   },
   "files": [
     "lib/**/*.js",
-    "src/**/*.ts"
+    "lib/**/d.ts"
   ],
   "repository": {
     "type": "git",

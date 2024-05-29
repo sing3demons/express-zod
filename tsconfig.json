@@ -2,7 +2,7 @@
   "compilerOptions": {
     "lib": ["ESNext"],
     "target": "ES6",
-    "outDir": "dist",
+    "outDir": "lib",
     "removeComments": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
