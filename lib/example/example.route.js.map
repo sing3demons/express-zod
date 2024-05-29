@@ -1,0 +1,1 @@
+{"version":3,"file":"example.route.js","sourceRoot":"/","sources":["example/example.route.ts"],"names":[],"mappings":"AACA,OAAO,EAAU,QAAQ,EAAE,MAAM,aAAa,CAAA;AAE9C,MAAM,OAAO,YAAY;IACvB,YAA6B,KAAa;QAAb,UAAK,GAAL,KAAK,CAAQ;IAAG,CAAC;IAE9C,QAAQ;QACN,OAAO,IAAI,QAAQ,EAAE,CAAC,QAAQ,CAAC,IAAI,CAAC,KAAK,CAAC,CAAC,QAAQ,CAAA;IACrD,CAAC;CACF"}
