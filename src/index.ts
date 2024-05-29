@@ -1,4 +1,5 @@
-export { IRoute, MyRouter } from './route.js'
+export { MyRouter } from './route.js'
+export { IRoute } from './type.d.js'
 export { default as Context } from './context.js'
 export { default as express } from 'express'
 export { default as uuidv4 } from 'uuid'

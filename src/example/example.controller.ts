@@ -1,4 +1,4 @@
-import { IRoute } from '../route.js'
+import { IRoute } from '../type'
 
 export default class ExampleController {
   constructor(private readonly route: IRoute) {}

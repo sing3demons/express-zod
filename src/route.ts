@@ -1,6 +1,7 @@
 import { Router, type NextFunction, type Request, type Response } from 'express'
 import { fromZodError } from 'zod-validation-error'
 import { z } from 'zod'
+import { BaseResponse, HandlerMetadata, MaybePromise, RequestHandler } from './type.js'
 
 export class TypeRoute {
   get = (path: string) => new TypedRouteHandler(path, HttpMethod.GET)
@@ -9,8 +10,6 @@ export class TypeRoute {
   delete = (path: string) => new TypedRouteHandler(path, HttpMethod.DELETE)
   patch = (path: string) => new TypedRouteHandler(path, HttpMethod.PATCH)
 }
-
-export type IRoute = TypeRoute
 
 export class MyRouter {
   constructor(public readonly instance: Router = Router()) {}
@@ -45,31 +44,6 @@ function catchAsync(fn: (...args: any[]) => any) {
   return (req: Request, res: Response, next: NextFunction) => {
     Promise.resolve(fn(req, res, next)).catch((err) => next(err))
   }
-}
-
-interface BaseResponse<T = unknown> {
-  statusCode?: number
-  message?: string
-  /**
-   * @default true
-   */
-  success?: boolean
-  data?: T
-  traceStack?: string
-  page?: number
-  pageSize?: number
-  total?: number
-}
-
-type MaybePromise<T> = T | Promise<T>
-
-type RequestHandler = (req: Request, res: Response, next: NextFunction) => MaybePromise<BaseResponse>
-
-interface HandlerMetadata {
-  __handlerMetadata: true
-  method: string
-  path: string
-  handler: RequestHandler
 }
 
 enum HttpMethod {
