@@ -23,5 +23,5 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "typeRoots": ["src/typings", "./node_modules/@types/"]
-  }
+  },
 }

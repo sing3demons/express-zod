@@ -9,7 +9,7 @@
   },
   "files": [
     "lib/index.js",
-    "lib/index.d.ts"
+    "src/**/*.ts"
   ],
   "repository": {
     "type": "git",
