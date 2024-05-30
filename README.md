@@ -68,3 +68,10 @@ app.listen(port, () => {
 }
 
 ```
+
+
+```
+touch .npmrc
+//npm.pkg.github.com/:_authToken=
+@sing3demons:registry=https://npm.pkg.github.com/
+```
