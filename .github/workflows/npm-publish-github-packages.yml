@@ -32,5 +32,4 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Logout from GitHub Packages
-        run: npm logout
+
