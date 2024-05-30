@@ -15,7 +15,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sing3demons/node-express-zod.git"
+    "url": "git+https://github.com/sing3demons/express-zod.git"
   },
   "publishConfig": {
     "@sing3demons:registry": "https://npm.pkg.github.com/"
