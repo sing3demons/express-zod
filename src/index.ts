@@ -1,10 +1,9 @@
 import { Router, type NextFunction, type Request, type Response } from 'express'
 import { fromZodError } from 'zod-validation-error'
 import { z } from 'zod'
-import * as Context from './context.js'
+import { default as Context } from './context.js'
 export { IContext } from './context.js'
 export { Context }
-
 export class TypeRoute {
   get = (path: string) => new TypedRouteHandler(path, HttpMethod.GET)
   post = (path: string) => new TypedRouteHandler(path, HttpMethod.POST)
