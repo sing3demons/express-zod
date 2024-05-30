@@ -1,6 +1,6 @@
 {
   "name": "@sing3demons/express-zod",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "type": "module",
   "main": "lib/index.js",
   "module": "lib/index.js",
