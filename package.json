@@ -1,5 +1,5 @@
 {
-  "name": "express-zod",
+  "name": "@sing3demons/express-zod",
   "version": "1.0.0",
   "type": "module",
   "main": "lib/index.js",
