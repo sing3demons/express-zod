@@ -18,10 +18,10 @@
     "url": "git+https://github.com/sing3demons/node-express-zod.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "@sing3demons:registry": "https://npm.pkg.github.com/"
   },
   "keywords": [],
-  "author": "",
+  "author": "sing3demons",
   "license": "ISC",
   "description": "",
   "devDependencies": {
