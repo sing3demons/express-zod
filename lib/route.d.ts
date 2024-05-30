@@ -2,7 +2,7 @@ import { Router, type NextFunction, type Request, type Response } from 'express'
 import { fromZodError } from 'zod-validation-error'
 import { z } from 'zod'
 
-export class TypeRoute {
+declare class TypeRoute {
   get = (path: string) => new TypedRouteHandler(path, HttpMethod.GET)
   post = (path: string) => new TypedRouteHandler(path, HttpMethod.POST)
   put = (path: string) => new TypedRouteHandler(path, HttpMethod.PUT)
@@ -12,7 +12,7 @@ export class TypeRoute {
 
 export type IRoute = TypeRoute
 
-export class MyRouter {
+declare class MyRouter {
   constructor(public readonly instance: Router = Router()) {}
 
   private preRequest(handler: RequestHandler) {
@@ -93,7 +93,7 @@ type TypedHandler<
   res: Response<TResponse>
 }) => MaybePromise<TResponse>
 
-class TypedRouteHandler<
+declare class TypedRouteHandler<
   RouteQuery extends z.ZodTypeAny,
   RouteParams extends z.ZodTypeAny,
   RouteBody extends z.ZodTypeAny
@@ -148,28 +148,28 @@ class TypedRouteHandler<
   }
 }
 
-class HttpError extends Error {
+declare class HttpError extends Error {
   constructor(public statusCode: number, message: string) {
     super(message)
     this.name = 'HttpError'
   }
 }
 
-class ValidationError extends HttpError {
+declare class ValidationError extends HttpError {
   constructor(public message: string) {
     super(400, message)
     this.name = 'ValidationError'
   }
 }
 
-export class NotFoundError extends HttpError {
+declare class NotFoundError extends HttpError {
   constructor(message: string) {
     super(404, message)
     this.name = 'NotFoundError'
   }
 }
 
-export class UnauthorizedError extends HttpError {
+declare class UnauthorizedError extends HttpError {
   constructor(message: string) {
     super(401, message)
     this.name = 'UnauthorizedError'
