@@ -75,3 +75,96 @@ touch .npmrc
 //npm.pkg.github.com/:_authToken=
 @sing3demons:registry=https://npm.pkg.github.com/
 ```
+
+```example
+import {
+  IRoute,
+  MyRouter,
+  Server,
+  TypeRoute,
+  globalErrorHandler,
+  Logger,
+  LoggerType,
+  Context,
+  ILogger,
+} from '@sing3demons/express-zod'
+import express, { Router } from 'express'
+import nodemailer, { Transporter } from 'nodemailer'
+import Mail from 'nodemailer/lib/mailer/index.js'
+const app = express()
+const port = 3002
+
+const log = new Logger()
+const myRoute: IRoute = new TypeRoute()
+app.use(express.json())
+app.use(Context.Ctx)
+class ExampleRoute {
+  constructor(private readonly route: IRoute = new TypeRoute()) {}
+
+  register(): Router {
+    const exampleController = new ExampleController(this.route, log)
+    return new MyRouter().Register(exampleController).instance
+  }
+}
+
+class MailService {
+  private transporter: Transporter
+  constructor(private readonly logger: ILogger) {
+    this.transporter = nodemailer.createTransport({
+      port: 1025,
+      host: 'localhost',
+    })
+    logger.info('MailService created')
+  }
+
+  sendMail = async (mailOptions: Mail.Options, logger: ILogger) => {
+    try {
+      const info = await this.transporter.sendMail(mailOptions)
+      logger.info(`sendMail : ${info.messageId}`)
+      return info
+    } catch (error) {
+      logger.error('Error', error)
+    }
+  }
+}
+
+class ExampleController {
+  constructor(private readonly route: IRoute, private readonly logger: LoggerType) {}
+
+  transporter = new MailService(this.logger)
+  get = this.route.get('/').handler(async ({}) => {
+    const logger = this.logger.Logger()
+    const start = performance.now()
+    logger.info('Start')
+    let result = []
+
+    const mailOptions: Mail.Options = {
+      from: 'from@me.com',
+      to: 'to@you.com',
+      subject: 'Hello',
+      text: 'Hello, World!',
+    }
+
+    for (let i = 0; i < 1000; i++) {
+      result.push(this.transporter.sendMail(mailOptions, logger))
+    }
+
+    const response = await Promise.all(result)
+    const end = performance.now()
+    const executionTime = (end - start).toFixed(2)
+    logger.info('End', { executionTime })
+    return {
+      message: 'Hello World',
+      total: response.length,
+      data: {
+        result: response.map((res) => res?.messageId),
+        executionTime: (end - start).toFixed(2),
+      },
+    }
+  })
+}
+
+app.use('/', new ExampleRoute(myRoute).register())
+app.use(globalErrorHandler)
+new Server(app).start(port)
+```
