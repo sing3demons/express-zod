@@ -219,4 +219,26 @@ declare class Context {
 
   private static _bindings: Map<string, { session: string }>
 }
-s
+import { ContextType, ILogger } from './context.js'
+
+export type ContextType = Record<string, string>
+
+export type ILogger = {
+  info: (message: string, data?: {} | [], ctx?: ContextType) => void
+  warn: (message: string, data?: {} | [], ctx?: ContextType) => void
+  error: (message: string, data?: any, ctx?: ContextType) => void
+  debug: (message: string, data?: {} | [], ctx?: ContextType) => void
+}
+
+declare class Logger implements ILogger {
+  constructor()
+  Logger(ctx?: ContextType, extra?: object): ILogger
+  info(message: string, data?: {} | [], ctx?: ContextType): void
+  warn(message: string, data?: {} | [], ctx?: ContextType): void
+  error(message: string, data?: any, ctx?: ContextType): void
+  debug(message: string, data?: {} | [], ctx?: ContextType): void
+}
+
+export type LoggerType = Logger
+
+export default Logger

@@ -34,6 +34,7 @@ export class MyRouter {
       if (route.__handlerMetadata) {
         const { path, handler } = route
         const method = route.method.toLowerCase()
+        console.log(this.instance.route(path))
         ;(this.instance.route(path) as any)[method](this.preRequest(handler))
       }
     })
