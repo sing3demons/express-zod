@@ -241,4 +241,14 @@ declare class Logger implements ILogger {
 
 export type LoggerType = Logger
 
-export default Logger
+export {
+  Logger,
+  Context,
+  globalErrorHandler,
+  ValidationError,
+  NotFoundError,
+  UnauthorizedError,
+  TypedRouteHandler,
+  MyRouter,
+  TypeRoute,
+}
