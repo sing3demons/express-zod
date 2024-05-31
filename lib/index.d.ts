@@ -1,4 +1,4 @@
-import { Router, type NextFunction, type Request, type Response } from 'express'
+import { Router, type NextFunction, type Request, type Response, type Express } from 'express'
 import { fromZodError } from 'zod-validation-error'
 import { z } from 'zod'
 
@@ -241,6 +241,11 @@ declare class Logger implements ILogger {
 
 export type LoggerType = Logger
 
+declare class Server {
+  constructor(app: Express)
+  start(port: number): void
+}
+
 export {
   Logger,
   Context,
@@ -251,4 +256,5 @@ export {
   TypedRouteHandler,
   MyRouter,
   TypeRoute,
+  Server,
 }
